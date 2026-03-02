@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation';
 import { differenceInCalendarDays, eachDayOfInterval } from 'date-fns';
 import { toast } from 'react-hot-toast';
 import ListingReservation from '@/app/components/listings/ListingReservation';
+import { Range } from 'react-date-range';
 
 const initialDateRange = {
   startDate: new Date(),
@@ -37,7 +38,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(listing.price);
-  const [dateRange, setDateRange] = useState(initialDateRange);
+  const [dateRange, setDateRange] = useState<Range>(initialDateRange);
 
   const disabledDates = useMemo(() => {
     let dates: Date[] = [];
